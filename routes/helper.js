@@ -14,3 +14,11 @@ export async function createUser(data){
     .collection('users')
     .insertMany(data);
 }
+
+export async function getUsers(request){
+    return await client
+    .db('crmdb')
+    .collection('users')
+    .find(request.query)
+    .toArray();
+}

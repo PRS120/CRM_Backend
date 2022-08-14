@@ -1,5 +1,8 @@
 import express, { application } from "express";
-import {getUserByEmail, createUser} from "./helper.js"
+import {
+    getUserByEmail,
+    getUsers,
+    createUser} from "./helper.js"
 //import bcrypt from "bcrypt";
 //import jwt from "jsonwebtoken";
 
@@ -12,6 +15,15 @@ router.get('/:email', async function(req, res){
     console.log(req.params, email);
 
     const user = await getUserByEmail(email);
+    console.log(user);
+
+    user ? res.send(user) : res.send("User does not exist");
+});
+
+//get users, involve query params
+router.get('/', async function(req, res){
+    console.log(req.query);
+    const user = await getUsers(req);
     console.log(user);
 
     user ? res.send(user) : res.send("User does not exist");
