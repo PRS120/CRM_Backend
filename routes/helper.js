@@ -12,7 +12,7 @@ export async function createUser(data){
     return await client
     .db('crmdb')
     .collection('users')
-    .insertMany(data);
+    .insertOne(data);
 }
 
 export async function getUsers(request){

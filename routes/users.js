@@ -24,7 +24,7 @@ router.get('/:email', async function(req, res){
 router.get('/', async function(req, res){
     console.log(req.query);
     const user = await getUsers(req);
-    console.log(user);
+    //console.log(user);
 
     user ? res.send(user) : res.send("User does not exist");
 });
