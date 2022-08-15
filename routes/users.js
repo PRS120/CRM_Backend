@@ -34,7 +34,7 @@ router.post('/createUser', async function(req, res){
     const data = req.body;
     const user = await getUserByEmail(data.EMail);
     if(user){
-        res.send("Email ID in use, please try with a different Email");
+        res.status(400).send("Email ID in use, please try with a different Email");
     }
     else{
         const creationResult = await createUser(data);
