@@ -32,15 +32,25 @@ router.get('/', async function(req, res){
 //create user
 router.post('/createUser', async function(req, res){
     const data = req.body;
-    const creationResult = await createUser(data);
-    console.log(creationResult);
-    res.send(creationResult);
+    const user = await getUserByEmail(data.EMail);
+    if(user){
+        res.send("Email ID in use, please try with a different Email");
+    }
+    else{
+        const creationResult = await createUser(data);
+        console.log(creationResult);
+        res.send(creationResult);
+    }
 });
 
 //user login
 
 
 //update user
+
+
+
+
 //delete user
 
 
